@@ -10,7 +10,14 @@
   new(
     title='Dashboard timeseries',
     datasource=null,
-    colormode='palette-classic'
+    colormode='palette-classic',
+    axisPlacement='auto',
+    drawStyle='line',
+    fillOpacity=0,
+    gradientMode='none',
+    lineInterpolation='linear',
+    linefill='solid',
+    lineWidth=1
   ):: {
     type: 'timeseries',
     title: title,
@@ -19,6 +26,27 @@
         default: {
             color: {
                 mode: colormode,
+            },
+            custom: {
+                axisLabel: '',
+                axisPlacement: axisPlacement,
+                barAlignment: 0,
+                drawStyle: drawStyle,
+                fillOpacity: fillOpacity,
+                gradientMode: gradientMode,
+                hideFrom: {
+                    legend: false,
+                    tooltip: false,
+                    viz: false,
+                },
+                lineInterpolation: lineInterpolation,
+                lineStyle: {
+                    fill: linefill,
+                    dash: [
+                        10, 10,
+                    ],
+                },
+                lineWidth: lineWidth,
             },
         },
     },
