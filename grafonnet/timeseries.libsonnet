@@ -9,9 +9,19 @@
    */
   new(
     title='Dashboard timeseries',
-    how=null
+    datasource=null,
+    colormode='palette-classic'
   ):: {
+    type: 'timeseries',
     title: title,
-    how: how,
+    datasource: datasource,
+    filedConfig: {
+        default: {
+            color: {
+                mode: colormode,
+            },
+        },
+    },
+
   },
 }
