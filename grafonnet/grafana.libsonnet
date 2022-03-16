@@ -30,4 +30,5 @@
   statPanel:: import 'stat_panel.libsonnet',
   transformation:: import 'transformation.libsonnet',
   timeseries:: import 'timeseries.libsonnet',
+  newrow:: import 'newrow.libsonnet',
 }

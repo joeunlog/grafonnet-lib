@@ -17,7 +17,29 @@
     gradientMode='none',
     lineInterpolation='linear',
     linefill='solid',
-    lineWidth=1
+    lineWidth=1,
+    pointSize=5,
+    scaleDistributiontype="linear",
+    scaleDistributionlog=2,
+    showPoints="auto",
+    spanNulls=false,
+    stackinggroup="A",
+    stackingmode="none",
+    thresholdsStylemode="off",
+    thresholdsmode="absolute",
+    thresholdsstepscolor1="red",
+    thresholdsstepsvalue1=null,
+    h=8,
+    w=12,
+    x=0,
+    y=0,
+    id="temporary",
+    legenddisplayMode="list",
+    tooltipmode="single",
+    expr="sum( kube_node_status_condition{condition=\"Ready\", status!=\"true\"} ) by ( status)",
+    interval="",
+    legendFormat="status: {{status}}",
+    refId="A"
   ):: {
     type: 'timeseries',
     title: title,
@@ -47,9 +69,58 @@
                     ],
                 },
                 lineWidth: lineWidth,
+                pointSize: pointSize,
+                scaleDistribution: {
+                    type: scaleDistributiontype,
+                    scaleDistributionlog: scaleDistributionlog,
+                },
+                showPoints: showPoints,
+                spanNulls: spanNulls,
+                stacking: {
+                    group: stackinggroup,
+                    mode: stackingmode,
+                },
+                thresholdsStyle: {
+                    mode: thresholdsStylemode,
+                },
+            },
+            mappings: [],
+            thresholds: {
+                mode: thresholdsmode,
+                steps: [
+                    {
+                        color: thresholdsstepscolor1,
+                        value: thresholdsstepsvalue1,
+                    },
+                ],
             },
         },
+        overrides: [],
     },
-
+    gridPos: {
+        h: h,
+        w: w,
+        x: x,
+        y: y,
+    },
+    id: id,
+    options: {
+        legend: {
+            calcs: [],
+            displayMode: legenddisplayMode,
+            placement: "bottom"
+        },
+        tooltip: {
+            mode: tooltipmode,
+        },
+    },
+    targets: [
+    ],
+    _nextTarget:: 0,
+    addTarget(target):: self {
+      local nextTarget = super._nextTarget,
+      _nextTarget: nextTarget + 1,
+      targets+: [target { refId: std.char(std.codepoint('A') + nextTarget) }],
+    },
   },
 }
