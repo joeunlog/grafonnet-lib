@@ -1,12 +1,4 @@
 {
-  /**
-   * Creates a [row](https://grafana.com/docs/grafana/latest/features/dashboard/dashboards/#rows).
-   * Rows are logical dividers within a dashboard and used to group panels together.
-   *
-   * @name row.new
-   *
-   * @param title The title of the row.
-   */
   new(
     title='Dashboard timeseries',
     datasource=null,
@@ -36,9 +28,9 @@
     id="temporary",
     legenddisplayMode="list",
     tooltipmode="single",
-    expr="sum( kube_node_status_condition{condition=\"Ready\", status!=\"true\"} ) by ( status)",
+    expr="",
     interval="",
-    legendFormat="status: {{status}}",
+    legendFormat="",
     refId="A"
   ):: {
     type: 'timeseries',
@@ -124,3 +116,4 @@
     },
   },
 }
+
