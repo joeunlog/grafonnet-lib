@@ -1,0 +1,2580 @@
+{
+   "__inputs": [ ],
+   "__requires": [ ],
+   "annotations": {
+      "list": [ ]
+   },
+   "editable": false,
+   "gnetId": null,
+   "graphTooltip": 0,
+   "hideControls": false,
+   "id": null,
+   "links": [ ],
+   "panels": [
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 0
+         },
+         "id": 2,
+         "panels": [ ],
+         "title": "Node Info",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 1
+         },
+         "id": 3,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum( kube_node_labels)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( kube_node_status_condition{condition=\"Ready\", status!=\"true\"} ) by ( status)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "status: {{status}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Node Count ( Fail Count )",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 1
+         },
+         "id": 4,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "( node_time_seconds - node_boot_time_seconds ) / 3600",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Uptime Node ( Day )",
+         "type": "timeseries"
+      },
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 9
+         },
+         "id": 5,
+         "panels": [ ],
+         "title": "CPU",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 10
+         },
+         "id": 6,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": " sum( kube_node_status_capacity{ resource=\"cpu\" } )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Tot Capacity",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( rate(node_cpu_seconds_total{mode=\"idle\" } [5m]) )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Tot Available",
+               "refId": "B"
+            }
+         ],
+         "title": "Total CPU Capa",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 10
+         },
+         "id": 7,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"}) / count(instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"})",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": " instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"}",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Total CPU Avg Utilization(%)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 10
+         },
+         "id": 8,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "AVG( kube_node_status_capacity{ resource=\"cpu\" } ) by ( node)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{node}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node CPU Capacity(Core)",
+         "type": "timeseries"
+      },
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 26
+         },
+         "id": 9,
+         "panels": [ ],
+         "title": "Memory",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "decbytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 27
+         },
+         "id": 10,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": " sum( kube_node_status_capacity{ resource=\"memory\" } )\n",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Tot",
+               "refId": "A"
+            },
+            {
+               "expr": " :node_memory_MemAvailable_bytes:sum",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Available",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Memory Capacity(GB)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 27
+         },
+         "id": 11,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(instance:node_memory_utilisation:ratio{job=\"node-exporter\", job=\"node-exporter\"})/\ncount(instance:node_memory_utilisation:ratio{job=\"node-exporter\", job=\"node-exporter\"})",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Tot AVG",
+               "refId": "A"
+            }
+         ],
+         "title": "Total Memory AVG Utilization(%)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "decbytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 27
+         },
+         "id": 12,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "AVG(kube_node_status_capacity{ resource=\"memory\" })by ( node)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{node}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node Memory Capacity(GB)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 27
+         },
+         "id": 13,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": " instance:node_memory_utilisation:ratio{job=\"node-exporter\", job=\"node-exporter\" }",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node Memory Utilization(%)",
+         "type": "timeseries"
+      },
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 43
+         },
+         "id": 14,
+         "panels": [ ],
+         "title": "Storage",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "bytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 44
+         },
+         "id": 15,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum( node_filesystem_size_bytes{fstype !=\"tmpfs\", mountpoint!=\"/boot\"} )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total Use",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( node_filesystem_avail_bytes{fstype !=\"tmpfs\", mountpoint!=\"/boot\"} )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Available",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Storage Capa",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 44
+         },
+         "id": 16,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "avg( 100-  (  node_filesystem_avail_bytes{fstype !=\"tmpf\", mountpoint!=\"/boot\" } / node_filesystem_size_bytes{ fstype !=\"tmpfs\", mountpoint!=\"/boot\"} ) * 100 )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "AVG",
+               "refId": "A"
+            }
+         ],
+         "title": "Tot Storage  AVG Utilization",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "bytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 44
+         },
+         "id": 17,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "node_filesystem_size_bytes{fstype !=\"tmpfs\", mountpoint!=\"/boot\"} ",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node Storage Capacity (GB)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "decbytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 44
+         },
+         "id": 18,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(kube_node_status_capacity{ resource=\"ephemeral_storage\" })",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(kube_node_status_capacity{ resource=\"ephemeral_storage\" }) -sum(kube_node_status_allocatable{resource=\"ephemeral_storage\"})",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Available",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Ephemeral storage",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 44
+         },
+         "id": 19,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_disk_io_time_seconds_total[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_disk_io_time_seconds_total[5m])) by ( instance )",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Total node_disk_io_time_seconds_total",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "percentunit"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 44
+         },
+         "id": 20,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "100- ( node_filesystem_avail_bytes{fstype !=\"tmpfs\", mountpoint !=\"boot\"}  /  node_filesystem_size_bytes{ fstype !=\"tmpfs\", mountpoint!=\"/boot\"}  ) * 100\n",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node  Storage Utilization(%)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 44
+         },
+         "id": 21,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum( rate(node_disk_io_time_weighted_seconds_total [5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( rate(node_disk_io_time_weighted_seconds_total [5m])) by ( instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Total node_disk_io_time_weighted_seconds_total",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "bytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 44
+         },
+         "id": 22,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum ( node_filesystem_size_bytes{ fstype !=\"tmpfs\", mountpoint!=\"/boot\"} - node_filesystem_avail_bytes{fstype !=\"tmpfs\", mountpoint!=\"/boot\"} ) by ( instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node Storage Use (GB)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 44
+         },
+         "id": 23,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_disk_io_time_seconds_total[5m])) by( instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "io time: {{instance}}",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_disk_io_time_seconds_total[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Total",
+               "refId": "B"
+            }
+         ],
+         "title": "Total io time ",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 44
+         },
+         "id": 24,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_disk_read_time_seconds_total[5m])) by( instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Read time: {{instance}}",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_disk_write_time_seconds_total[5m])) by( instance)  * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Write time : {{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Node node_disk_io_time_weighted_seconds_total",
+         "type": "timeseries"
+      },
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 84
+         },
+         "id": 25,
+         "panels": [ ],
+         "title": "Network",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "bytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 85
+         },
+         "id": 26,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_bytes_total{device=~\"e.+\"}[5m])) + sum(rate(node_network_transmit_bytes_total{device=~\"e.+\"}[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "eth",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_receive_bytes_total{device=~\"cni.+\"}[5m])) + sum(rate(node_network_transmit_bytes_total{device=~\"cni.+\"}[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Common Network Interface",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Network Total  (byte)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 85
+         },
+         "id": 27,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_packets_total{device=~\"e.+\"}[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "eth receive",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_receive_packets_total{device=~\"cni.+\"}[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "CNI Receive",
+               "refId": "B"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_packets_total{device=~\"e.+\"}[5m])) * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "eth transmi",
+               "refId": "C"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_packets_total{device=~\"cni.+\"}[5m])) * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "CNI transmit",
+               "refId": "D"
+            }
+         ],
+         "title": "Total Network Packet",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "bytes"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 85
+         },
+         "id": 28,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_bytes_total{device=~\"e.+\"}[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Receive",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_bytes_total{device=~\"e.+\"}[5m]))* -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "Transmit",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Network Receive byte",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 85
+         },
+         "id": 29,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_drop_total[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "receive",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_drop_total[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "transmit",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Network Drop",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 85
+         },
+         "id": 30,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_bytes_total{device=~\"e.+\"}[5m])) by(instance) + sum(rate(node_network_transmit_bytes_total{device=~\"e.+\"}[5m])) by (instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node Network Receive + Transmit ( bytes )",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 85
+         },
+         "id": 31,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_drop_total{}[5m])) by(instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "receive {{instance}}",
+               "refId": "A"
+            },
+            {
+               "expr": "(sum(rate(node_network_transmit_drop_total{}[5m])) by (instance) ) * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "tranmit {{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Node Network  Drop",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 85
+         },
+         "id": 32,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_errs_total[5m]))",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "receive",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_errs_total[5m])) * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "transmit",
+               "refId": "B"
+            }
+         ],
+         "title": "Total Network Error ",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "fieldConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               },
+               "unit": "none"
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 85
+         },
+         "id": 33,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(rate(node_network_receive_errs_total[5m])) by ( instance)",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "receive: {{instance}}",
+               "refId": "A"
+            },
+            {
+               "expr": "sum(rate(node_network_transmit_errs_total[5m])) by ( instance) * -1",
+               "format": "time_series",
+               "intervalFactor": 1,
+               "legendFormat": "transmit: {{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Node Network Error",
+         "type": "timeseries"
+      }
+   ],
+   "refresh": "",
+   "rows": [ ],
+   "schemaVersion": 14,
+   "style": "dark",
+   "tags": [ ],
+   "templating": {
+      "list": [ ]
+   },
+   "time": {
+      "from": "now-6h",
+      "to": "now"
+   },
+   "timepicker": {
+      "refresh_intervals": [
+         "5s",
+         "10s",
+         "30s",
+         "1m",
+         "5m",
+         "15m",
+         "30m",
+         "1h",
+         "2h",
+         "1d"
+      ],
+      "time_options": [
+         "5m",
+         "15m",
+         "1h",
+         "6h",
+         "12h",
+         "24h",
+         "2d",
+         "7d",
+         "30d"
+      ]
+   },
+   "timezone": "browser",
+   "title": "Cluster WorkerNode-eunvit",
+   "version": 0
+}

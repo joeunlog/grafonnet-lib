@@ -1,0 +1,86 @@
+{
+   "datasource": null,
+   "filedConfig": {
+      "default": {
+         "color": {
+            "mode": "palette-classic"
+         },
+         "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+               "legend": false,
+               "tooltip": false,
+               "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+               "dash": [
+                  10,
+                  10
+               ],
+               "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+               "scaleDistributionlog": 2,
+               "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+               "group": "A",
+               "mode": "none"
+            },
+            "thresholdsStyle": {
+               "mode": "off"
+            }
+         },
+         "mappings": [ ],
+         "thresholds": {
+            "mode": "absolute",
+            "steps": [
+               {
+                  "color": "red",
+                  "value": null
+               }
+            ]
+         }
+      },
+      "overrides": [ ]
+   },
+   "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 0
+   },
+   "id": "temporary",
+   "options": {
+      "legend": {
+         "calcs": [ ],
+         "displayMode": "list",
+         "placement": "bottom"
+      },
+      "tooltip": {
+         "mode": "single"
+      }
+   },
+   "targets": [
+      {
+         "exemplar": true,
+         "expr": "sum( kube_node_status_condition{condition=\"Ready\", status!=\"true\"} ) by ( status)",
+         "hide": false,
+         "interval": "",
+         "legendFormat": "status: {{status}}",
+         "refId": "A"
+      }
+   ],
+   "title": "test",
+   "type": "timeseries"
+}

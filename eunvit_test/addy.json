@@ -1,0 +1,530 @@
+{
+   "__inputs": [ ],
+   "__requires": [ ],
+   "annotations": {
+      "list": [ ]
+   },
+   "editable": false,
+   "gnetId": null,
+   "graphTooltip": 0,
+   "hideControls": false,
+   "id": null,
+   "links": [ ],
+   "panels": [
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0
+         },
+         "id": 2,
+         "panels": [ ],
+         "title": "Node Info",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "filedConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               }
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0
+         },
+         "id": 3,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum( kube_node_labels)",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( kube_node_status_condition{condition=\"Ready\", status!=\"true\"} ) by ( status)",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "status: {{status}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Node Count ( Fail Count )",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "filedConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               }
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12
+         },
+         "id": 4,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "( node_time_seconds - node_boot_time_seconds ) / 3600",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "{{instance}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Uptime Node ( Day )",
+         "type": "timeseries"
+      },
+      {
+         "collapsed": false,
+         "datasource": null,
+         "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0
+         },
+         "id": 5,
+         "panels": [ ],
+         "title": "CPU",
+         "type": "row"
+      },
+      {
+         "datasource": null,
+         "filedConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               }
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0
+         },
+         "id": 6,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": " sum( kube_node_status_capacity{ resource=\"cpu\" } )",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "Tot Capacity",
+               "refId": "A"
+            },
+            {
+               "expr": "sum( rate(node_cpu_seconds_total{mode=\"idle\" } [5m]) )",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "Tot Available",
+               "refId": "B"
+            }
+         ],
+         "title": "Total CPU Capa",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "filedConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               }
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12
+         },
+         "id": 7,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "sum(instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"}) / count(instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"})",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "Total",
+               "refId": "A"
+            },
+            {
+               "expr": " instance:node_cpu_utilisation:rate5m{job=\"node-exporter\"}",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "{{instance}}",
+               "refId": "B"
+            }
+         ],
+         "title": "Total CPU Avg Utilization(%)",
+         "type": "timeseries"
+      },
+      {
+         "datasource": null,
+         "filedConfig": {
+            "default": {
+               "color": {
+                  "mode": "palette-classic"
+               },
+               "custom": {
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 0,
+                  "gradientMode": "none",
+                  "hideFrom": {
+                     "legend": false,
+                     "tooltip": false,
+                     "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineStyle": {
+                     "dash": [
+                        10,
+                        10
+                     ],
+                     "fill": "solid"
+                  },
+                  "lineWidth": 1,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                     "scaleDistributionlog": 2,
+                     "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                     "group": "A",
+                     "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                     "mode": "off"
+                  }
+               },
+               "mappings": [ ],
+               "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                     {
+                        "color": "red",
+                        "value": null
+                     }
+                  ]
+               }
+            },
+            "overrides": [ ]
+         },
+         "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0
+         },
+         "id": 8,
+         "options": {
+            "legend": {
+               "calcs": [ ],
+               "displayMode": "list",
+               "placement": "bottom"
+            },
+            "tooltip": {
+               "mode": "single"
+            }
+         },
+         "targets": [
+            {
+               "expr": "AVG( kube_node_status_capacity{ resource=\"cpu\" } ) by ( node)",
+               "format": "time_series",
+               "intervalFactor": 2,
+               "legendFormat": "{{node}}",
+               "refId": "A"
+            }
+         ],
+         "title": "Node CPU Capacity(Core)",
+         "type": "timeseries"
+      }
+   ],
+   "r1": {
+      "newyy": 9,
+      "yy": 0
+   },
+   "r2": {
+      "newyy": 26,
+      "yy": 9
+   },
+   "refresh": "",
+   "rows": [ ],
+   "schemaVersion": 14,
+   "style": "dark",
+   "tags": [ ],
+   "templating": {
+      "list": [ ]
+   },
+   "time": {
+      "from": "now-6h",
+      "to": "now"
+   },
+   "timepicker": {
+      "refresh_intervals": [
+         "5s",
+         "10s",
+         "30s",
+         "1m",
+         "5m",
+         "15m",
+         "30m",
+         "1h",
+         "2h",
+         "1d"
+      ],
+      "time_options": [
+         "5m",
+         "15m",
+         "1h",
+         "6h",
+         "12h",
+         "24h",
+         "2d",
+         "7d",
+         "30d"
+      ]
+   },
+   "timezone": "browser",
+   "title": "eunvit-function-test",
+   "version": 0
+}
