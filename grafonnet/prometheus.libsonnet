@@ -19,7 +19,7 @@
   target(
     expr,
     format='time_series',
-    intervalFactor=2,
+    intervalFactor=1,
     legendFormat='',
     datasource=null,
     interval=null,

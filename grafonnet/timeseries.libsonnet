@@ -21,6 +21,7 @@
     thresholdsmode="absolute",
     thresholdsstepscolor1="red",
     thresholdsstepsvalue1=null,
+    unit="none",
     h=8,
     w=12,
     x=0,
@@ -36,7 +37,7 @@
     type: 'timeseries',
     title: title,
     datasource: datasource,
-    filedConfig: {
+    fieldConfig: {
         default: {
             color: {
                 mode: colormode,
@@ -86,6 +87,7 @@
                     },
                 ],
             },
+            unit: unit,
         },
         overrides: [],
     },
