@@ -26,7 +26,7 @@
     w=12,
     x=0,
     y=0,
-    id="temporary",
+    id=null,
     legenddisplayMode="list",
     tooltipmode="single",
     expr="",
